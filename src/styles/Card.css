@@ -36,3 +36,6 @@ html,
 body {
   height: 100vh;
 }
+h1 {
+  color: rgb(70, 82, 166);
+}
