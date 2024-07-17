@@ -13,14 +13,18 @@ function App() {
       setScore(0);
       setCardsClicked([]);
     } else {
-      console.log(score);
-      setScore((score) => score + 1); // Use functional update to ensure correct score update
+      setScore((score) => {
+        const newScore = score + 1; //score doesnt get updated immediately
+        console.log(score);
+        console.log(newScore);
+
+        setHighScore((highScore) => Math.max(highScore, newScore));
+        return newScore;
+      }); // Use functional update to ensure correct score update
       setCardsClicked([...cardsClicked, card]);
     }
-    console.log(score);
 
     // Use functional update to ensure highScore reflects the latest score
-    setHighScore((highScore) => Math.max(highScore, score));
   };
 
   useEffect(() => {
