@@ -27,6 +27,8 @@ function App() {
     // Use functional update to ensure highScore reflects the latest score
   };
 
+  const [isLoading, setIsLoading] = useState(true); // State for loading indicator
+
   useEffect(() => {
     const randomOffset = Math.floor(Math.random() * (1302 - 8)); // Generate a random offset
 
@@ -56,6 +58,7 @@ function App() {
       } catch (error) {
         console.error("Error fetching data:", error);
       }
+      setIsLoading(false); // Set loading state to false in case of error
     }
 
     fetchData();
@@ -72,14 +75,18 @@ function App() {
         </div>
       </div>
       <div className="container">
-        {pokemon.map((poke, index) => (
-          <Card
-            key={index}
-            image={poke.sprites}
-            name={poke.name}
-            onClick={handleClick}
-          />
-        ))}
+        {isLoading ? ( // Conditional rendering based on isLoading state
+          <div className="spinner"></div> // Render spinner while loading
+        ) : (
+          pokemon.map((poke, index) => (
+            <Card
+              key={index}
+              image={poke.sprites}
+              name={poke.name}
+              onClick={handleClick}
+            />
+          ))
+        )}
       </div>
     </>
   );
