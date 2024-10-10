@@ -1,4 +1,4 @@
-Welcome to the Memory-Card(Pokemon) Game built with React and Vite! 🎮
+## Memory Card (Pokemon)
 
 ![Screenshot 2024-10-01 160323](https://github.com/user-attachments/assets/ba412236-23f3-4d82-ace6-8c9ffa9e576a)
 
